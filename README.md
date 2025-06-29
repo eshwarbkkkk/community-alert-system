@@ -68,3 +68,9 @@ Eshwar  – https://github.com/eshwarbkkkk
 📱 Mobile app (React Native or Flutter)
 
 📊 Admin analytics dashboard
+
+## ✅ Project Progress
+
+- [x] Day 1: Project setup and GitHub integration
+- [x] Day 2: Database schema and ER design
+- [x] Day 3: Entity and repository layer complete
