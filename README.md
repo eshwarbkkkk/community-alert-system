@@ -1,76 +1,109 @@
-# 🛡️ Community Alert System – Life-Saving Proximity-Based Emergency Platform
+# 🌍 Community Alert System 🔔
 
-A smart community-driven emergency alert system built with Java and Spring Boot.  
-Citizens can report incidents like medical emergencies, assaults, or accidents, and the system instantly notifies **nearby users** based on location — allowing help to arrive even before authorities do.
+A real-time, location-aware **disaster and emergency alert platform** built using Spring Boot, with optional AI-powered 
+responses via OpenAI. Designed for public safety, this system connects citizens, responders, and admins for efficient 
+crisis communication.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Raise emergency alerts with location and incident type
-- 📍 Notify nearby users within a defined radius (using location matching)
-- 👨‍⚕️ Role-based users: Citizens, Responders, Admins
-- 🔐 User authentication and basic access control
-- 🗺️ (Optional) Map integration for live location view
-- ✉️ Notification via email / SMS (coming soon)
-- 📊 Admin dashboard to view and manage alerts
+- 📌 **Location-Based Alerts** — Get alerts within 5 km radius.
+- 🧠 **AI-Powered Recommendations** — Ask safety questions using OpenRouter AI.
+- 👤 **Role-Based Users** — Citizens, Responders, Admins.
+- 🔄 **Alert Status Updates** — Track alert statuses: `OPEN`, `RESOLVED`, `IGNORED`.
+- 📂 **Category Filtering** — Filter alerts by `Fire`, `Flood`, `Medical`, etc.
+- 🔒 **User Management** — Register, update, and delete user profiles.
+- 🌐 **REST API Ready** — Integrates easily with frontend frameworks like React.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Java 17+**
-- **Spring Boot** (Web, JPA, Security)
-- **MySQL** for database
-- **HTML/CSS / Thymeleaf** or React (frontend optional)
-- **Git + GitHub** for version control
-- **Postman / Insomnia** for API testing
+- **Backend**: Java 21, Spring Boot 3, Spring Data JPA
+- **Database**: MySQL
+- **AI Integration**: OpenRouter/OpenAI API
+- **Build Tool**: Maven
+- **API Documentation**: Swagger 
 
 ---
 
-## 📂 Project Structure
+## 📦 Project Structure
+
+
 community-alert-system/
-├── src/
-│ ├── main/
-│ │ ├── java/com/safezone/community_alert_system/
-│ │ │ ├── controller/
-│ │ │ ├── model/
-│ │ │ ├── repository/
-│ │ │ └── service/
-│ │ └── resources/
-│ │ └── application.properties
-├── pom.xml
+│
+├── model/ # JPA Entities (User, Alert, etc.)
+├── controller/ # REST API endpoints
+├── service/ # Business logic layer
+├── repository/ # Spring Data JPA Repositories
+├── dto/ # DTOs for request/response
+├── config/ # Configuration classes (API Keys etc.)
+├── exception/ # Global & Custom Exception Handling
+└── resources/
+├── application.properties
+└── data.sql (optional)
+
+---
+
+## 🔗 Important Endpoints (Swagger)
+GET /api/alerts — Get all alerts
+GET /api/alerts/nearby — Get alerts near a location
+GET /api/alerts/category — Filter alerts by category
+GET /api/alerts?status=OPEN — Filter by status
+POST /api/alerts — Create a new alert
+PUT /api/alerts/{id}/status — Update status
+DELETE /api/alerts/{id} — Delete alert
+GET /api/ai/ask?question=... — Ask disaster-related question to AI
 
 
 ---
 
-## 🔧 How to Run
+## 💡 How AI Works
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/eshwarbkkkk/community-alert-system.git
+The system connects to OpenAI-compatible API (like OpenRouter) using `RestTemplate`. You can ask safety-related questions like:
+> "What to do during a flood?"
 
-2. Configure application.properties with your database and mail settings.
+The AI responds based on the latest safety knowledge.
 
-3. Run the project:
-   mvn spring-boot:run
+---
 
-📸 Screenshots (coming soon...)
+## 🧪 Sample Prompt for AI
+
+> **User:** What precautions should I take during an earthquake?
+
+> **AI:** Drop, Cover, and Hold On. Avoid windows. Stay indoors until the shaking stops...
+
+---
+
+
+
+## 👨‍💻 How to Run
+
+```bash
+
+./mvnw spring-boot:run 
+  ///or//
+mvn spring-boot:run
+
+🔑 Configure API Key
+Before running the project, make sure to set your OpenAI or OpenRouter API key in 
+src/main/resources/application.properties:
+openai.api.key=sk-your-api-key-here
+openai.api.url=https://openrouter.ai/api/v1/chat/completions
+
+📌 TODO (Future Scope)
+Add real-time WebSocket alerts 🔴
+
+SMS/Email Notifications
+
+React.js frontend dashboard
+
+Admin panel for alert monitoring
+
+🤝 Contributions
+Open to suggestions and PRs. Let's build a safer community together.
 
 📌 Author
 Eshwar  – https://github.com/eshwarbkkkk
 
-💡 Future Enhancements
-🔔 WebSocket/Real-time push alerts
-
-🗺 Google Maps API for visual location alerts
-
-📱 Mobile app (React Native or Flutter)
-
-📊 Admin analytics dashboard
-
-## ✅ Project Progress
-
-- [x] Day 1: Project setup and GitHub integration
-- [x] Day 2: Database schema and ER design
-- [x] Day 3: Entity and repository layer complete
