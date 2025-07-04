@@ -1,0 +1,24 @@
+# Java build output
+/target/
+*.log
+
+# Maven-specific
+dependency-reduced-pom.xml
+buildNumber.properties
+release.properties
+
+# IntelliJ IDEA settings
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code (if used)
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive files
+src/main/resources/application.properties
