@@ -21,10 +21,6 @@ public class AlertController {
        return alertService.saveAlert(alert);
     }
 
-    @GetMapping
-    public List<Alert> getAllAlerts(){
-        return alertService.getAllAlerts();
-    }
 
     @GetMapping("/user/{userId}")
     public List<Alert> getAlertsByUser(@PathVariable Long userId){
@@ -50,4 +46,29 @@ public class AlertController {
         List<Alert> nearby= alertService.getNearbyAlerts(lat, lon);
         return ResponseEntity.ok(nearby);
     }
+    @GetMapping
+    public List<Alert> getAllAlerts(@RequestParam(required = false) String status) {
+        if (status != null && !status.isEmpty()) {
+            return alertService.getAlertsByStatus(status);
+        } else {
+            return alertService.getAllAlerts();
+        }
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAlert(@PathVariable Long id){
+        alertService.deleteAlert(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/category")
+    public List<Alert> getAlertsByCategory(@RequestParam String category) {
+        return alertService.getAlertsByCategory(category);
+    }
+
+
+
+
+
 }

@@ -43,8 +43,7 @@
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-openai-spring-boot-starter</artifactId>
 			<version>0.8.0</version>
-		</dependency>
--->
+		</dependency>-->
 
 
 		<dependency>
@@ -82,13 +81,13 @@
 			</plugin>
 		</plugins>
 	</build>
-	<!--<repositories>
+	<repositories>
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestone Repository</name>
 			<url>https://repo.spring.io/milestone</url>
 		</repository>
-	</repositories>-->
+	</repositories>
 </project>
 
 

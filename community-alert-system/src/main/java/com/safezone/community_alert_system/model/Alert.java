@@ -1,6 +1,7 @@
 package com.safezone.community_alert_system.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -22,6 +23,17 @@ public class Alert {
         private double longitude;
 
         private LocalDateTime timestamp;
+        @Schema(description = "Alert category", example = "FIRE")
+        @Enumerated(EnumType.STRING)
+        private AlertCategory category; // 🚨 Add this field: e.g. "Fire", "Flood", "Earthquake"
+
+        public AlertCategory getCategory() {
+                return category;
+        }
+
+        public void setCategory(AlertCategory category) {
+                this.category = category;
+        }
 
         private String status; // OPEN, RESOLVED, IGNORED
 

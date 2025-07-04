@@ -1,5 +1,7 @@
 package com.safezone.community_alert_system.service;
 
+import com.safezone.community_alert_system.dto.UserUpdateDTO;
+import com.safezone.community_alert_system.exception.ResourceNotFoundException;
 import com.safezone.community_alert_system.model.User;
 import com.safezone.community_alert_system.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,4 +33,27 @@ public class UserServiceImpl implements UserService{
         Optional<User> user = userRepository.findById(id);
         return user.orElse(null);
     }
+
+    @Override
+    public User updateUser(Long id, UserUpdateDTO dto) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+
+        existingUser.setName(dto.getName());
+        existingUser.setEmail(dto.getEmail());
+        existingUser.setPhone(dto.getPhone());
+        existingUser.setLatitude(dto.getLatitude());
+        existingUser.setLongitude(dto.getLongitude());
+
+        return userRepository.save(existingUser);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: "+id));
+        userRepository.delete(existingUser);
+    }
+
+
 }

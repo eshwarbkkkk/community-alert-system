@@ -1,6 +1,8 @@
 package com.safezone.community_alert_system.service;
 
+import com.safezone.community_alert_system.exception.ResourceNotFoundException;
 import com.safezone.community_alert_system.model.Alert;
+import com.safezone.community_alert_system.model.AlertCategory;
 import com.safezone.community_alert_system.model.User;
 import com.safezone.community_alert_system.repository.AlertRepository;
 import com.safezone.community_alert_system.repository.UserRepository;
@@ -117,4 +119,29 @@ public class AlertServiceImpl implements AlertService{
 
                });
    }
+
+
+    @Override
+    public List<Alert> getAlertsByStatus(String status) {
+        return alertRepository.findByStatusIgnoreCase(status);
+    }
+
+    @Override
+    public void deleteAlert(Long id) {
+        Alert alert= alertRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Alert not found with id: "+id));
+        alertRepository.delete(alert);
+    }
+
+    @Override
+    public List<Alert> getAlertsByCategory(String category) {
+        AlertCategory enumCategory = AlertCategory.valueOf(category.toUpperCase());
+        return alertRepository.findByCategory(enumCategory);
+    }
+
+
+
+
+
+
 }

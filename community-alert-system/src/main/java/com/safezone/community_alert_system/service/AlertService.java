@@ -13,4 +13,12 @@ public interface AlertService {
     Alert updateAlertStatus(Long id, String status);
     List<Alert> getNearbyAlerts(double latitude, double longitude);
     Alert createAlert(Alert alert);
+
+    List<Alert> getAlertsByStatus(String status);
+
+    void deleteAlert(Long id);
+
+    List<Alert> getAlertsByCategory(String category);
+
+
 }
