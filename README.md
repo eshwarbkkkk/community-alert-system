@@ -101,8 +101,10 @@ React.js frontend dashboard
 
 Admin panel for alert monitoring
 
-🤝 Contributions
-Open to suggestions and PRs. Let's build a safer community together.
+## 👥 Contributing
+
+If you'd like to contribute, please fork the repo, create a new branch, make your changes, and open a pull request. You can also request access as a collaborator.
+
 
 📌 Author
 Eshwar  – https://github.com/eshwarbkkkk
