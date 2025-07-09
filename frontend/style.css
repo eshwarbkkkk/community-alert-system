@@ -1,0 +1,247 @@
+/* frontend/style.css */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+h1, h2 {
+    color: #dc3545;
+}
+
+form input, button {
+    margin: 5px;
+    padding: 8px;
+}
+#alerts {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #alerts li {
+    margin: 10px auto;
+    padding: 15px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  /* Status-specific classes */
+  .open {
+    background-color: #e53935; /* red */
+  }
+  
+  .resolved {
+    background-color: #43a047; /* green */
+  }
+  
+  .ignored {
+    background-color: #757575; /* gray */
+  }
+  /* Button Styling */
+#showNearbyBtn {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#showNearbyBtn:hover {
+  background-color: #218838;
+}
+
+/* Nearby Alerts Container */
+#nearby-alerts {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+/* Individual Alert Card */
+.alert-card {
+  border-left: 6px solid #ff4d4d;
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-card h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #333;
+}
+
+.alert-card small {
+  color: #666;
+  font-size: 13px;
+}
+select, button {
+  margin-top: 5px;
+  padding: 6px;
+  font-size: 14px;
+}
+/* General Button Styles */
+button {
+  padding: 8px 12px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Primary button */
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Update button */
+.btn-update {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-update:hover {
+  background-color: #218838;
+}
+
+/* Delete button */
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+.map-container {
+  height: 400px;
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #e0eafc, #cfdef3); /* soft gradient */
+    color: #333;
+  }
+
+  h1, h2, h3 {
+    color: #2c3e50;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  button {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 14px;
+    margin: 8px 4px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  button:hover {
+    background-color: #2980b9;
+  }
+
+  .alert-card {
+    background: #fefefe;
+    border-left: 5px solid #f39c12;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  select {
+    padding: 6px;
+    margin: 4px;
+    border-radius: 4px;
+  }
+
+  ul#alerts {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 20px;
+    background-color: #f4f7f9;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  #alertMap {
+    height: 400px;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  .alert-card {
+    background-color: #ffffff;
+    border-left: 6px solid #007bff;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s;
+  }
+  
+  .alert-card:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Optional: Different color for each status */
+  .open {
+    border-left-color: #28a745; /* Green */
+  }
+  
+  .resolved {
+    border-left-color: #6c757d; /* Gray */
+  }
+  
+  .ignored {
+    border-left-color: #dc3545; /* Red */
+  }
+    

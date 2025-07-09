@@ -1,0 +1,61 @@
+<!-- frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Community Alert System</title>
+    <link rel="stylesheet" href="style.css">
+<!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <h1>🚨 Community Alert System</h1>
+    
+    <section id="alertForm">
+        <h2>Report an Alert</h2>
+        <form id="createAlertForm">
+            <input type="text" id="type" placeholder="Type (Fire, Medical, etc)" required><br>
+            <input type="text" id="description" placeholder="Description" required><br>
+            <input type="number" id="latitude" placeholder="Latitude" required><br>
+            <input type="number" id="longitude" placeholder="Longitude" required><br>
+            <input type="text" id="status" placeholder="Status (OPEN)" required><br>
+            <button type="submit">Submit Alert</button>
+        </form>
+    </section>
+    <button id="showNearbyBtn" onclick="fetchNearbyAlerts()">🔍 Show Nearby Alerts</button>
+
+
+<div id="nearby-alerts"></div>
+
+
+  <!-- Show My Alerts Button -->
+<button class="btn-primary" onclick="loadMyAlerts()">📋 Show My Alerts</button>
+
+<select id="statusFilter" onchange="filterAlerts()">
+    <option value="ALL">All</option>
+    <option value="OPEN">Open</option>
+    <option value="RESOLVED">Resolved</option>
+    <option value="IGNORED">Ignored</option>
+  </select>
+  
+
+    <section id="alertsList">
+        <h2>All Alerts</h2>
+        <ul id="alerts"></ul>
+    </section>
+    <h2 style="margin-top: 40px;">🧭 Alert Map</h2>
+    <div id="alertMap" class="map-container"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
