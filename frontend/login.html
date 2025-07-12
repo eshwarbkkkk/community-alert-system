@@ -1,0 +1,25 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - SafeZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="login.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h1>🔐 SafeZone Login</h1>
+    <form id="loginForm">
+      <input type="text" id="emailOrPhone" placeholder="📧 Email or 📱 Phone" required />
+      <input type="password" id="password" placeholder="🔑 Password" required />
+      <button type="submit">➡️ Login</button>
+    </form>
+    <p id="errorMsg" class="error"></p>
+    <p>
+      New here? <a href="register.html">Sign Up</a><br>
+      🚨 <a href="alert.html" onclick="setEmergencyMode()">Emergency Mode</a>
+    </p>
+  </div>
+</body>
+</html>

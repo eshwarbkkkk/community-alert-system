@@ -9,9 +9,6 @@ import java.util.List;
 @Entity
 public class Alert {
 
-
-
-
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;

@@ -1,0 +1,27 @@
+<!-- frontend/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome to SafeZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <h1>👋 Welcome to SafeZone</h1>
+  <p>Please choose an option to proceed:</p>
+
+  <button onclick="location.href='login.html'">🔐 Login</button>
+  <button onclick="location.href='register.html'">📝 Sign Up</button>
+  <button onclick="handleEmergency()">🆘 Emergency</button>
+
+  <script>
+    function handleEmergency() {
+      localStorage.setItem("mode", "emergency");
+      window.location.href = "alert.html";
+    }
+  </script>
+</body>
+</html>
+

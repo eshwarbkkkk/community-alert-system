@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+@CrossOrigin(origins = "*") // Allow all frontend domains during development
 @RestController
 @RequestMapping("/api/ai")
 public class OpenAIController {
@@ -24,15 +25,22 @@ public class OpenAIController {
     })
     @GetMapping("/ask")
     public ResponseEntity<String> ask(@RequestParam String question) {
-
         try {
             if (question == null || question.trim().isEmpty()) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Question is required");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "❗ Question is required");
             }
+
             String response = service.askOpenAI(question);
+
+            // For debugging
+            System.out.println("🔍 User asked: " + question);
+            System.out.println("🤖 AI said: " + response);
+
             return ResponseEntity.ok(response);
+
         } catch (Exception e) {
-            return ResponseEntity.status(500).body("Something went wrong while processing the AI response.");
+            e.printStackTrace(); // Optional: log to file in production
+            return ResponseEntity.status(500).body("⚠️ Failed to fetch AI suggestions. Please try again later.");
         }
     }
 }

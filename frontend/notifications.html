@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notifications - SafeZone</title>
+  
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <!-- JS Libraries -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <h1>🔔 Notifications</h1>
+  <button onclick="goToDashboard()" class="back-button">⬅️ Back to Dashboard</button>
+
+
+  <div id="notificationList" class="notification-container"></div>
+
+  <h2>🗺️ Map View</h2>
+ <div id="map" style="height: 400px; width: 100%; border: 2px solid #aaa; margin-top: 10px; border-radius: 8px;"></div>
+
+
+  <!-- Notifications JS -->
+  <script src="notifications.js"></script>
+
+  <!-- Optional Fallback JS: Ensure map only loads after location is fetched -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          localStorage.setItem("userLat", position.coords.latitude);
+          localStorage.setItem("userLon", position.coords.longitude);
+          loadNotifications(); // call from notifications.js
+        },
+        (error) => {
+          alert("⚠️ Location access denied. Map may not work.");
+          loadNotifications(); // still call it without location
+        }
+      );
+    });
+  </script>
+</body>
+</html>
+

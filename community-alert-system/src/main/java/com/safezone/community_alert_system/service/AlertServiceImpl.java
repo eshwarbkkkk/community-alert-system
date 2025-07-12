@@ -3,12 +3,15 @@ package com.safezone.community_alert_system.service;
 import com.safezone.community_alert_system.exception.ResourceNotFoundException;
 import com.safezone.community_alert_system.model.Alert;
 import com.safezone.community_alert_system.model.AlertCategory;
+import com.safezone.community_alert_system.model.Notification;
 import com.safezone.community_alert_system.model.User;
 import com.safezone.community_alert_system.repository.AlertRepository;
+import com.safezone.community_alert_system.repository.NotificationRepository;
 import com.safezone.community_alert_system.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,12 +23,31 @@ public class AlertServiceImpl implements AlertService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private NotificationRepository notificationRepository;
 
     @Override
     public Alert saveAlert(Alert alert) {
-        alert.setTimestamp(java.time.LocalDateTime.now());
-        return alertRepository.save(alert);
+        alert.setTimestamp(LocalDateTime.now());
+        Alert savedAlert = alertRepository.save(alert);
+
+        // Find nearby users
+        List<User> nearbyUsers = userRepository.findNearbyUsers(alert.getLatitude(), alert.getLongitude(), 5); // 5km radius
+
+        for (User user : nearbyUsers) {
+            Notification notification = new Notification();
+            notification.setUser(user);
+            notification.setMessage("🚨 Nearby emergency: " + alert.getType() + " - " + alert.getDescription());
+            notification.setTimestamp(LocalDateTime.now());
+            notification.setLatitude(alert.getLatitude());
+            notification.setLongitude(alert.getLongitude());
+            notificationRepository.save(notification);
+        }
+
+        return savedAlert;
     }
+
+
 
     @Override
     public List<Alert> getAllAlerts() {

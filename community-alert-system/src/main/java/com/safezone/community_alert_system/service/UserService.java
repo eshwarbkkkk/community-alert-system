@@ -15,4 +15,6 @@ public interface UserService {
     User updateUser(Long id, UserUpdateDTO dto);
     void deleteUser(Long id);
 
+    User findByEmail(String email);
+    List<User> findNearbyUsers(double lat, double lon, double radiusKm);
 }

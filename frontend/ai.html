@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Suggestions - SafeZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f7f7f7;
+    }
+
+    #aiResponseContainer {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #4a148c;
+      text-align: center;
+    }
+
+  #ai-response {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-left: 5px solid #007bff;
+  margin-top: 10px;
+  white-space: pre-line;
+  line-height: 1.6;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+    #chatBox {
+      margin-top: 30px;
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      background: #fafafa;
+    }
+
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 75%;
+    }
+
+    .user {
+      background-color: #e1f5fe;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    .ai {
+      background-color: #f3e5f5;
+      text-align: left;
+      margin-right: auto;
+    }
+
+    #askForm {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    #askForm input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+
+    #askForm button, #speakBtn, #backBtn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background: #6a1b9a;
+      color: white;
+      cursor: pointer;
+    }
+
+    #askForm button:hover, #speakBtn:hover, #backBtn:hover {
+      background-color: #4a148c;
+    }
+
+    #btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="aiResponseContainer">
+    <h1>🤖 AI Emergency Suggestions</h1>
+    <p><strong>Initial Tip:</strong></p>
+    <div id="ai-response">Loading response...</div>
+
+    <div id="btns">
+      <button id="speakBtn">🔊 Read Aloud</button>
+      <button id="backBtn" onclick="window.location.href='userDashboard.html'">🏠 Back to Dashboard</button>
+    </div>
+
+    <hr>
+
+    <h2>Need more help?</h2>
+    <div id="chatBox"></div>
+    <form id="askForm">
+      <input type="text" id="question" placeholder="Ask follow-up question..." required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="ai.js"></script>
+</body>
+</html>
+

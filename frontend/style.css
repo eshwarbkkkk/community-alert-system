@@ -1,247 +1,609 @@
-/* frontend/style.css */
+/* style.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f8f9fa;
+  background: linear-gradient(to bottom right, #1d3557, #457b9d);
+  color: #f1faee;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
 }
 
-h1, h2 {
-    color: #dc3545;
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
 }
 
-form input, button {
-    margin: 5px;
-    padding: 8px;
+p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #dceff5;
 }
-#alerts {
-    list-style: none;
-    padding: 0;
-  }
-  
-  #alerts li {
-    margin: 10px auto;
-    padding: 15px;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 10px;
-    color: #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  
-  /* Status-specific classes */
-  .open {
-    background-color: #e53935; /* red */
-  }
-  
-  .resolved {
-    background-color: #43a047; /* green */
-  }
-  
-  .ignored {
-    background-color: #757575; /* gray */
-  }
-  /* Button Styling */
-#showNearbyBtn {
-  padding: 12px 24px;
-  font-size: 16px;
-  background-color: #28a745; /* Green */
-  color: white;
+
+button {
+  background-color: #f1faee;
+  color: #1d3557;
   border: none;
+  padding: 0.8rem 2rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-#showNearbyBtn:hover {
-  background-color: #218838;
+button:hover {
+  background-color: #a8dadc;
+  color: #1d3557;
+  transform: scale(1.05);
 }
 
-/* Nearby Alerts Container */
-#nearby-alerts {
-  margin-top: 20px;
-  padding: 10px;
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  button {
+    width: 80%;
+    font-size: 1rem;
+  }
+}
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  padding: 20px;
 }
 
-/* Individual Alert Card */
-.alert-card {
-  border-left: 6px solid #ff4d4d;
-  background-color: #f9f9f9;
-  padding: 15px;
+.register-container form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-container input,
+.register-container select {
+  width: 100%;
+  padding: 12px;
   margin-bottom: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
 }
 
-.alert-card h4 {
-  margin: 0 0 8px;
-  font-size: 18px;
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.register-container button:hover {
+  background-color: #0056b3;
+}
+.location-group {
+  margin-top: 15px;
+}
+
+.location-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.location-buttons button {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1976d2;
+  color: white;
+  cursor: pointer;
+}
+
+.location-buttons button:hover {
+  background-color: #0d47a1;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 22px;
+  cursor: pointer;
+}
+#registerMap {
+  height: 300px;
+  width: 100%;
+  margin-top: 10px;
+}
+.map-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.map-content {
+  margin: auto;
+  padding: 20px;
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+}
+
+.close-btn {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* General Reset */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #a6c0fe, #f68084);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Login Container */
+.login-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 350px;
+}
+
+.login-container h1 {
+  margin-bottom: 20px;
   color: #333;
 }
 
-.alert-card small {
-  color: #666;
-  font-size: 13px;
-}
-select, button {
-  margin-top: 5px;
-  padding: 6px;
+.login-container input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #bbb;
+  border-radius: 8px;
   font-size: 14px;
 }
-/* General Button Styles */
-button {
-  padding: 8px 12px;
-  margin: 5px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 6px;
+
+.login-container button {
+  width: 95%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
   border: none;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-/* Primary button */
-.btn-primary {
-  background-color: #007bff;
+.login-container button:hover {
+  background-color: #45a049;
+}
+
+.login-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.alert-container {
+  max-width: 500px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.alert-container h1 {
+  color: #c0392b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.alert-container input,
+.alert-container select,
+.alert-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.alert-container button {
+  background-color: #e74c3c;
   color: white;
+  border: none;
+  cursor: pointer;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.alert-container button:hover {
+  background-color: #c0392b;
 }
 
-/* Update button */
-.btn-update {
-  background-color: #28a745;
+.location-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.location-buttons button {
+  width: 48%;
+}
+
+/* Map Modal Styling */
+.map-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close-btn {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+.ai-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.response-box {
+  background: #e6f7ff;
+  padding: 15px;
+  margin-top: 15px;
+  border-left: 4px solid #1890ff;
+  border-radius: 5px;
+  white-space: pre-wrap;
+}
+#aiResponseContainer {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fefefe;
+  color: #222;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  line-height: 1.6;
+}
+
+#aiResponseContainer h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+#aiResponseContainer p {
+  white-space: pre-line; /* preserves line breaks from AI */
+}
+#speakBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
   color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
-.btn-update:hover {
-  background-color: #218838;
+#speakBtn:hover {
+  background-color: #45a049;
+}
+.dashboard-container {
+  text-align: center;
+  margin-top: 50px;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Delete button */
-.btn-delete {
-  background-color: #dc3545;
+.dashboard-buttons button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #2c3e50;
   color: white;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.3s;
 }
 
-.btn-delete:hover {
-  background-color: #c82333;
+.dashboard-buttons button:hover {
+  background-color: #3498db;
 }
-.map-container {
+.notification-container {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+.notification-card {
+  background: #fff0f0;
+  padding: 15px;
+  border-left: 6px solid crimson;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.notification-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.notification-card small {
+  color: gray;
+}
+.notification-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.notification-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 300px;
+  background-color: #f9f9f9;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+.notification-card button {
+  margin-top: 0.5rem;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.notification-card button:hover {
+  background: #0056b3;
+}
+.notification-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.notification-card {
+  background: #ffffff;
+  border-left: 5px solid #ff4d4d;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  width: 300px;
+  transition: transform 0.2s;
+}
+
+.notification-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.notification-card h3 {
+  color: #d32f2f;
+  margin-top: 0;
+}
+
+.notification-card small {
+  color: #555;
+  font-size: 12px;
+}
+
+.notification-card p {
+  margin: 8px 0;
+}
+
+.notification-card button {
+  background: #d32f2f;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.notification-card button:hover {
+  background: #b71c1c;
+}
+/* Fix map container layout */
+#map {
   height: 400px;
   width: 100%;
   border: 2px solid #ccc;
   border-radius: 10px;
-  margin-top: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-section {
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
+/* Make sure page scrolls and doesn't clip map */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
 }
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to right, #e0eafc, #cfdef3); /* soft gradient */
-    color: #333;
-  }
+/* Optional container fix */
+.notification-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  h1, h2, h3 {
-    color: #2c3e50;
-    text-align: center;
-  }
+.back-button {
+  background-color: #3f51b5;
+  color: white;
+  padding: 10px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s;
+}
 
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
+.back-button:hover {
+  background-color: #303f9f;
+}
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
 
-  button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 14px;
-    margin: 8px 4px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-  }
+.alert-card {
+  background: #fffefa;
+  border: 2px solid #f39c12;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+}
 
-  button:hover {
-    background-color: #2980b9;
-  }
+.alert-card:hover {
+  transform: scale(1.01);
+}
 
-  .alert-card {
-    background: #fefefe;
-    border-left: 5px solid #f39c12;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  }
+.alert-card h3 {
+  color: #c0392b;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
 
-  select {
-    padding: 6px;
-    margin: 4px;
-    border-radius: 4px;
-  }
+.alert-card p {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #333;
+}
 
-  ul#alerts {
-    list-style: none;
-    padding: 0;
-  }
+.alert-card p strong {
+  color: #000;
+}
 
-  li {
-    margin-bottom: 20px;
-    background-color: #f4f7f9;
-    padding: 10px;
-    border-radius: 6px;
-  }
+.alert-card small {
+  color: #777;
+  font-size: 14px;
+}
 
-  #alertMap {
-    height: 400px;
-    margin-top: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  body {
-    font-family: 'Roboto', sans-serif;
-  }
-  .alert-card {
-    background-color: #ffffff;
-    border-left: 6px solid #007bff;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    font-family: 'Roboto', sans-serif;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.3s;
-  }
-  
-  .alert-card:hover {
-    background-color: #f0f0f0;
-  }
-  
-  /* Optional: Different color for each status */
-  .open {
-    border-left-color: #28a745; /* Green */
-  }
-  
-  .resolved {
-    border-left-color: #6c757d; /* Gray */
-  }
-  
-  .ignored {
-    border-left-color: #dc3545; /* Red */
-  }
-    
+.alert-card button {
+  margin: 8px 10px 0 0;
+  padding: 8px 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.alert-card button:hover {
+  background-color: #0056b3;
+}
+
+.alert-card button:last-of-type {
+  background-color: #dc3545;
+}
+
+.alert-card button:last-of-type:hover {
+  background-color: #b02a37;
+}

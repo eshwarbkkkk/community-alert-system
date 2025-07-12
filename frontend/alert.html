@@ -1,0 +1,48 @@
+<!-- alert.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Emergency Alert - SafeZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="alert.js"></script>
+</head>
+<body>
+  <div class="alert-container">
+    <h1>🚨 Emergency Alert</h1>
+
+    <form id="alertForm">
+      <input type="text" id="type" placeholder="Alert Type (e.g., Fire)" required />
+      <input type="text" id="description" placeholder="Description" required />
+      <select id="category" required>
+        <option value="">Select Category</option>
+        <option value="FIRE">Fire</option>
+        <option value="FLOOD">Flood</option>
+        <option value="EARTHQUAKE">Earthquake</option>
+        <option value="ASSAULT">Assault</option>
+        <option value="MEDICAL">Medical</option>
+      </select>
+      <input type="number" id="latitude" placeholder="Latitude" step="any" required />
+      <input type="number" id="longitude" placeholder="Longitude" step="any" required />
+      <div class="location-buttons">
+        <button type="button" onclick="getLocation()">📍 Use My Location</button>
+        <button type="button" onclick="openMap()">🗺️ Pick from Map</button>
+      </div>
+      <button type="submit">🚨 Submit Emergency Alert</button>
+    </form>
+
+    <!-- Map Modal -->
+    <div id="mapModal" class="map-modal" style="display:none;">
+      <div class="map-content">
+        <span class="close-btn" onclick="closeMap()">&times;</span>
+        <div id="map" style="height: 300px;"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -19,13 +19,15 @@ public class OpenAIServiceImpl implements OpenAIService {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        // Request body
+        // 🔹 Step 1: Format the prompt for better readability
+        String prompt = "Give clear, step-by-step emergency advice in bullet points. "
+                + "Use short sentences and include newlines. Question: " + userPrompt;
+
+        // 🔹 Step 2: Build the request body
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("model", "mistralai/mistral-7b-instruct");
-// ✅ correct ID
-        // or try "mistral/mixtral-8x7b-instruct"
+        requestBody.put("model", "mistralai/mistral-7b-instruct:free");
         requestBody.put("messages", List.of(
-                Map.of("role", "user", "content", userPrompt)
+                Map.of("role", "user", "content", prompt)
         ));
 
         HttpHeaders headers = new HttpHeaders();
@@ -46,7 +48,8 @@ public class OpenAIServiceImpl implements OpenAIService {
             }
         }
 
-        return "Failed to get response from OpenAI.";
+        return "❌ Failed to get response from AI.";
     }
+
 }
 

@@ -55,5 +55,17 @@ public class UserServiceImpl implements UserService{
         userRepository.delete(existingUser);
     }
 
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElse(null); // or throw exception if preferred
+    }
+
+    @Override
+    public List<User> findNearbyUsers(double lat, double lon, double radiusKm) {
+        return userRepository.findNearbyUsers(lat, lon, radiusKm);
+
+    }
+
 
 }

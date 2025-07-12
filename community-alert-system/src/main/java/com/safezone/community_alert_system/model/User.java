@@ -31,6 +31,19 @@ public class User {
     @JsonManagedReference
     private List<Alert> alerts;
 
+    // ADD THIS FOR NOTIFICATIONS
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Notification> notifications;
+
+    public List<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
+    }
+
     public Long getId() {
         return id;
     }

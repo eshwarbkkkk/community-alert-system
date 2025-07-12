@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Dashboard - SafeZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="userDashboard.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>👋 Welcome, <span id="username">User</span></h1>
+    <h3>Your Role: <span id="role">CITIZEN</span></h3>
+
+    <div class="dashboard-buttons">
+      <button onclick="goTo('notifications.html')">🔔 Notifications</button>
+      <button onclick="goTo('alert.html')">🚨 Raise Alert</button>
+      <button onclick="goTo('ai.html')">🧠 AI Suggestions</button>
+      <button onclick="window.location.href='allAlerts.html'">📋 View Alerts</button>
+      <button onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <div id="adminActions" style="display: none;">
+      <h4>🔐 Admin Panel</h4>
+      <p>You can update and delete alerts from the alert page.</p>
+    </div>
+
+    <div id="responderActions" style="display: none;">
+      <h4>🚑 Responder Panel</h4>
+      <p>You can update alert statuses.</p>
+    </div>
+  </div>
+</body>
+</html>
+

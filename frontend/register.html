@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - SafeZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="register.js"></script>
+
+  <!-- Leaflet CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <div class="register-container">
+    <h1>📝 User Registration</h1>
+
+    <form id="userForm">
+      <input type="text" id="name" placeholder="Full Name" required /><br>
+      <input type="email" id="email" placeholder="Email" required /><br>
+      <input type="password" id="password" placeholder="Password" required /><br>
+      <input type="text" id="phone" placeholder="Phone Number" required /><br>
+
+      <div class="location-group">
+        <label>📍 Location:</label><br>
+        <input type="number" id="latitude" placeholder="Latitude" step="any" required />
+        <input type="number" id="longitude" placeholder="Longitude" step="any" required />
+        <div class="location-buttons">
+          <button type="button" onclick="autoFillLocation()">📌 Use My Location</button>
+          <button type="button" onclick="openMapModal()">🗺️ Choose from Map</button>
+        </div>
+      </div>
+
+      <select id="role" required>
+        <option value="CITIZEN">Citizen</option>
+        <option value="RESPONDER">Responder</option>
+        <option value="ADMIN">Admin</option>
+      </select><br><br>
+
+      <button type="submit">🚀 Register</button>
+    </form>
+  </div>
+
+  <!-- 🗺️ Map Modal -->
+  <div id="mapModal" class="map-modal">
+    <div class="map-content">
+      <span class="close-btn" onclick="closeMapModal()">&times;</span>
+      <div id="map" style="height: 300px;"></div>
+    </div>
+  </div>
+</body>
+</html>
