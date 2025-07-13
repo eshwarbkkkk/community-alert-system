@@ -70,7 +70,7 @@ A full-stack **Community Alert System** built with **Spring Boot**, **JavaScript
 
 
 community-alert-system/
-├── backend/
+├── community-alert-system/
 │ └── src/main/java/com/safezone/...
 ├── frontend/
 │ ├── login.html
